@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="apache.xmlgraphics.batik.awt.util" type="repository">
+    <properties maven-id="org.apache.xmlgraphics:batik-awt-util:1.7" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-awt-util/1.7/batik-awt-util-1.7.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-util/1.7/batik-util-1.7.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
