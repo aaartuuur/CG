@@ -15,7 +15,7 @@ public class DrawPanel extends JPanel implements ActionListener {
     private Human human;
     private Nlo nlo;
 
-    public DrawPanel(final int width, final int height, final int timerDelay) {
+    public DrawPanel(final int timerDelay) {
         timer = new Timer(timerDelay, this);
         timer.stop();
 
