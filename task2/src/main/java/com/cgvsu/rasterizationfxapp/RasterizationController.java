@@ -33,6 +33,14 @@ public class RasterizationController {
                 new int[]{10, 10, 60},
                 new int[]{550, 600, 600},
                 new Color[]{Color.BLACK, new Color(0.96, 0.5, 0, 1), Color.BLUE});
+        Rasterization.fillTriangle(canvas.getGraphicsContext2D(),
+                new int[]{790, 790, 790},
+                new int[]{20, 400, 490},
+                new Color[]{Color.BLACK, new Color(0.96, 0.5, 0, 1), Color.BLUE});
+        Rasterization.fillTriangle(canvas.getGraphicsContext2D(),
+                new int[]{780, 500, 150},
+                new int[]{10, 10, 10},
+                new Color[]{Color.BLACK, new Color(0.96, 0.5, 0, 1), Color.BLUE});
         anchorPane.prefWidthProperty().addListener((ov, oldValue, newValue) -> canvas.setWidth(newValue.doubleValue()));
         anchorPane.prefHeightProperty().addListener((ov, oldValue, newValue) -> canvas.setHeight(newValue.doubleValue()));
 
@@ -54,6 +62,14 @@ public class RasterizationController {
                 Rasterization.fillTriangle(canvas.getGraphicsContext2D(),
                         new int[]{10, 10, 60},
                         new int[]{550, 600, 600},
+                        new Color[]{Color.BLACK, new Color(0.96, 0.5, 0, 1), Color.BLUE});
+                Rasterization.fillTriangle(canvas.getGraphicsContext2D(),
+                        new int[]{790, 790, 790},
+                        new int[]{20, 400, 490},
+                        new Color[]{Color.BLACK, new Color(0.96, 0.5, 0, 1), Color.BLUE});
+                Rasterization.fillTriangle(canvas.getGraphicsContext2D(),
+                        new int[]{780, 500, 150},
+                        new int[]{10, 10, 10},
                         new Color[]{Color.BLACK, new Color(0.96, 0.5, 0, 1), Color.BLUE});
 
                 Rasterization.fillTriangle(canvas.getGraphicsContext2D(),
