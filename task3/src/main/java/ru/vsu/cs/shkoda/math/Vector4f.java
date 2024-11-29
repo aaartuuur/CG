@@ -1,5 +1,6 @@
 package ru.vsu.cs.shkoda.math;
 
+
 import static ru.vsu.cs.shkoda.math.Global.EPS;
 
 public class Vector4f implements Vector<Vector4f> {
@@ -10,31 +11,36 @@ public class Vector4f implements Vector<Vector4f> {
         this.w = w;
     }
 
-    float x, y, z, w;
+    public float x, y, z, w;
 
 
-    public static Vector4f addition(Vector4f v1, Vector4f v2) {
+    public static Vector4f addition(final Vector4f v1, final Vector4f v2) {
         return new Vector4f(v1.x + v2.x, v1.y + v2.y, v1.z + v2.z, v1.w + v2.w);
     }
 
     @Override
-    public void add(Vector4f v) {
+    public void add(final Vector4f v) {
         x += v.x;
         y += v.y;
         z += v.z;
         w += v.w;
     }
 
-    public static Vector4f subtraction(Vector4f v1, Vector4f v2) {
+    public static Vector4f subtraction(final Vector4f v1, final Vector4f v2) {
         return new Vector4f(v1.x - v2.x, v1.y - v2.y, v1.z - v2.z, v1.w - v2.w);
     }
 
     @Override
-    public void sub(Vector4f v) {
+    public void sub(final Vector4f v) {
         x -= v.x;
         y -= v.y;
         z -= v.z;
         w -= v.w;
+    }
+
+    @Override
+    public void sub(Vector3f var1, Vector3f var2) {
+
     }
 
     @Override
@@ -80,16 +86,15 @@ public class Vector4f implements Vector<Vector4f> {
         if (length < EPS) {
             throw new ArithmeticException("Normalization of a zero vector is not allowed.");
         }
-        float invLength = 1 / length;
-        return this.multiply(invLength);
+        return this.divide(length);
     }
 
-    public static float dotProduct(Vector4f v1, Vector4f v2) {
+    public static float dotProduct(final Vector4f v1, final Vector4f v2) {
         return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z + v1.w * v2.w;
     }
 
     @Override
-    public boolean equals(Vector4f other) {
+    public boolean equals(final Vector4f other) {
         return Math.abs(x - other.x) < EPS
                 && Math.abs(y - other.y) < EPS
                 && Math.abs(z - other.z) < EPS

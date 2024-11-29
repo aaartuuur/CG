@@ -2,37 +2,47 @@ package ru.vsu.cs.shkoda.math;
 
 import static ru.vsu.cs.shkoda.math.Global.EPS;
 
+;
+
 public class Vector3f implements Vector<Vector3f> {
     public Vector3f(float x, float y, float z) {
         this.x = x;
         this.y = y;
         this.z = z;
     }
+    public Vector3f() {
+        this.x = 0;
+        this.y = 0;
+        this.z = 0;
+    }
 
-    //объединить мб общий интерфейс
+    public float x, y, z;
 
-    float x, y, z;
-
-    public static Vector3f addition(Vector3f v1, Vector3f v2) {
+    public static Vector3f addition(final Vector3f v1, final Vector3f v2) {
         return new Vector3f(v1.x + v2.x, v1.y + v2.y, v1.z + v2.z);
     }
 
     @Override
-    public void add(Vector3f v) {
+    public void add(final Vector3f v) {
         x += v.x;
         y += v.y;
         z += v.z;
     }
 
-    public static Vector3f subtraction(Vector3f v1, Vector3f v2) {
+    @Override
+    public void sub(Vector3f v) {
+
+    }
+
+    public static Vector3f subtraction(final Vector3f v1, final Vector3f v2) {
         return new Vector3f(v1.x - v2.x, v1.y - v2.y, v1.z - v2.z);
     }
 
     @Override
-    public void sub(Vector3f v) {
-        x -= v.x;
-        y -= v.y;
-        z -= v.z;
+    public final void sub(Vector3f var1, Vector3f var2) {
+        this.x = var1.x - var2.x;
+        this.y = var1.y - var2.y;
+        this.z = var1.z - var2.z;
     }
 
     @Override
@@ -70,30 +80,51 @@ public class Vector3f implements Vector<Vector3f> {
         return (float) Math.sqrt(x * x + y * y + z * z);
     }
 
+    public static float lenghtTwoVectors(final Vector3f v1, final Vector3f v2){
+        return (float) Math.sqrt((v1.x-v2.x) * (v1.x-v2.x) + (v1.y-v2.y) * (v1.y-v2.y) + (v1.z-v2.z) * (v1.z-v2.z));
+    }
+
     @Override
     public Vector3f normal() {
         final float length = this.length();
         if (length < EPS) {
             throw new ArithmeticException("Normalization of a zero vector is not allowed.");
         }
-        float invLength = 1 / length;
-        this.mult(invLength);
-        return this;
+        return this.divide(length);
     }
 
-    public static float dotProduct(Vector3f v1, Vector3f v2) {
+    public final void normalize() {
+        float var1 = (float)(1.0 / Math.sqrt((double)(this.x * this.x + this.y * this.y + this.z * this.z)));
+        this.x *= var1;
+        this.y *= var1;
+        this.z *= var1;
+    }
+
+    public static float dotProduct(final Vector3f v1, final Vector3f v2) {
         return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
     }
 
-    public static Vector3f crossProduct(Vector3f v1, Vector3f v2) {
+    public float dot(final Vector3f v){
+        return this.x * v.x + this.y * v.y + this.z * v.z;
+    }
+
+    public static Vector3f crossProduct(final Vector3f v1, final Vector3f v2) {
         final float x = v1.y * v2.z - v1.z * v2.y;
         final float y = v1.z * v2.x - v1.x * v2.z;
         final float z = v1.x * v2.y - v1.y * v2.x;
         return new Vector3f(x, y, z);
+    }// 0 сонапрв
+
+    public final void cross(Vector3f var1, Vector3f var2) {
+        float var3 = var1.y * var2.z - var1.z * var2.y;
+        float var4 = var2.x * var1.z - var2.z * var1.x;
+        this.z = var1.x * var2.y - var1.y * var2.x;
+        this.x = var3;
+        this.y = var4;
     }
 
     @Override
-    public boolean equals(Vector3f other) {
+    public boolean equals(final Vector3f other) {
         return Math.abs(x - other.x) < EPS
                 && Math.abs(y - other.y) < EPS
                 && Math.abs(z - other.z) < EPS;
